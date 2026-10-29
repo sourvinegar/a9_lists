@@ -124,12 +124,22 @@ class DoublyLinkedList {
         /// Afterward, other becomes empty
         /// no action if self concatenation
         void concatenate(DoublyLinkedList& other){
+            if(other.empty())
+                return;
             if(this != &other)
             {
                 Node* pred = trailer->prev;
-                pred->next = other.header->next;
+                Node* first = other.header->next;
+                Node* last = other.trailer->prev;
+
+                pred->next = first;
+                first->prev = pred;
+                last->next = trailer;
+                trailer->prev = last;
+
                 other.header->next = other.trailer;
-                other.trailer->next = other.header;
+                other.trailer->prev = other.header;
+                
                 sz = sz + other.sz;
                 other.sz = 0;
             }
