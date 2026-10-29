@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch2/catch.hpp"
 #include "list/circularly_linked.hpp"
-#include "list/double_linked.hpp"
+#include "list/doubly_linked.hpp"
 #include "list/singly_linked.hpp"
 
 TEST_CASE("Basic function tests for singly linked list")
